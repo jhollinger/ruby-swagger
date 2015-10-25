@@ -37,6 +37,9 @@ module Swagger::Grape
         when 'array'
           swagger_type['type'] = 'array'
           swagger_type['items'] = {'type' => 'string'}
+        when /^\[(string|integer|symbol|float)\]$/
+          swagger_type['type'] = 'array'
+          swagger_type['items'] = {'type' => $1}
         when 'hash'
           swagger_type['type'] = 'object'
           swagger_type['properties'] = {}
