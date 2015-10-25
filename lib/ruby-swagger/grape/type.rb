@@ -101,7 +101,7 @@ module Swagger::Grape
                 end
               end
 
-              cursor['properties'][target]['description'] = definition[:documentation][:desc] if definition[:documentation].present?
+              cursor['properties'][target]['description'] = definition[:documentation][:desc] if definition[:documentation].present? and definition[:documentation][:desc].present?
               cursor['properties'][target]['type'] ||= 'string'  #no type defined, assuming it's a string
             end
           end
