@@ -11,6 +11,7 @@ module Swagger::Grape
       swagger_param = {}
       swagger_param['description'] = @param[:desc]  if @param[:desc].present?
       swagger_param['default'] = @param[:default]   if @param[:default].present?
+      swagger_param['default'] = swagger_param['default'].call.to_s if swagger_param['default'].respond_to? :call
 
       swagger_param.merge! Swagger::Grape::Type.new(@param[:type]).to_swagger
 
